@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Daniel
  */
-public class Server1 extends UnicastRemoteObject implements Functions {
+public class Server1 implements Functions {
 
     public Server1() throws RemoteException{
         super();

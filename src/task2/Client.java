@@ -7,6 +7,7 @@ package task2;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -140,8 +141,6 @@ public class Client extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String reply="";
-        Server s = new Server();
-        
         if(jtHeight.getText().toString().equals("") || 
                 jtPassword.getText().toString().equals("") ||
                 jtWeight.getText().toString().equals("")){
@@ -163,15 +162,22 @@ public class Client extends javax.swing.JFrame {
                 InetAddress inetAddress = InetAddress.getLocalHost();
                 String ip = inetAddress.getHostAddress();
 
+                Registry x = LocateRegistry.getRegistry("192.168.43.78", 3666);
+                Functions z = (Functions) x.lookup("calcular massa corporea");
+           
+                
+                
                 data.add(""+imc);
                 data.add(ip);
                 data.add(jtPassword.getText().toString());
                 
-                reply = s.connectRemote(data);
+                reply = z.send(data);
                 
             } catch (RemoteException ex) {
                 JOptionPane.showMessageDialog(null, "Erro: "+ ex.getMessage());
             } catch (UnknownHostException ex) {
+                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NotBoundException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
             
