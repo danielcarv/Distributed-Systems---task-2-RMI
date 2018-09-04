@@ -38,8 +38,8 @@ public class Server extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        btIniciar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btStart = new javax.swing.JButton();
+        lbStatusServer = new javax.swing.JLabel();
         lbIpClient = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
@@ -47,16 +47,16 @@ public class Server extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        btIniciar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btIniciar.setText("Iniciar Sevidor");
-        btIniciar.addActionListener(new java.awt.event.ActionListener() {
+        btStart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btStart.setText("Iniciar Sevidor");
+        btStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btIniciarActionPerformed(evt);
+                btStartActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Status servidor");
+        lbStatusServer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbStatusServer.setText("Status servidor");
 
         lbIpClient.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbIpClient.setText("IP");
@@ -69,10 +69,10 @@ public class Server extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(btIniciar))
+                        .addComponent(btStart))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(jLabel2))
+                        .addComponent(lbStatusServer))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(lbIpClient)))
@@ -84,9 +84,9 @@ public class Server extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(lbIpClient)
                 .addGap(55, 55, 55)
-                .addComponent(btIniciar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(btStart, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(32, 32, 32)
-                .addComponent(jLabel2)
+                .addComponent(lbStatusServer)
                 .addGap(45, 45, 45))
         );
 
@@ -94,9 +94,11 @@ public class Server extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIniciarActionPerformed
+    private void btStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btStartActionPerformed
         // TODO add your handling code here:
 
+        lbStatusServer.setText("Servidor iniciado!");
+        
         try {
             Server1 s = new Server1();
             s.iniciar();
@@ -104,22 +106,21 @@ public class Server extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao iniciar servidor");
         }
 
-    }//GEN-LAST:event_btIniciarActionPerformed
+    }//GEN-LAST:event_btStartActionPerformed
 
     public static String connectRemote(ArrayList data) throws RemoteException{
         
         String replyServer="";
-        String ip = (String) data.get(2);
-        System.out.println("Teste");
-        Server.setIp(ip);
         
         try {
             Registry reg = LocateRegistry.getRegistry("", 4444);
             Functions fun = (Functions) reg.lookup("h1_server");
             
-            register(data);
-            
             replyServer = fun.send(data);
+            
+            if(replyServer.equals("Primeiro registro!")){
+                register(data);
+            }
     
         } catch (RemoteException e) {
             JOptionPane.showMessageDialog(null, "Erro1: "+ e.getMessage());
@@ -213,9 +214,9 @@ public class Server extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btIniciar;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btStart;
     private javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel lbIpClient;
+    private javax.swing.JLabel lbStatusServer;
     // End of variables declaration//GEN-END:variables
 }

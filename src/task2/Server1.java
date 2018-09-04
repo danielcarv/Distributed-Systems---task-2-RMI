@@ -26,13 +26,38 @@ public class Server1 extends UnicastRemoteObject implements Functions {
     @Override
     public String send(ArrayList data) throws RemoteException {
         
-        String ip = (String) data.get(1);
-        Server s = new Server();
-        s.setIp(ip);
+        String password = (String) data.get(2);
+        double imc = Double.parseDouble((String) data.get(0));
+        String reply="";
+        int test=0;
+        double firstImc=0;
         
-        String reply="Testando";
+        ArrayList<User> users = new ArrayList<>();
+        UserDAO udao = new UserDAO();
+        users = udao.retornaTodos();
         
-        reply = (String) data.get(1);
+        for(int i=0; i<users.size(); i++){
+            if(users.get(i).getPassword().equals(password)){
+                System.out.println(password+" - "+users.get(i).getPassword());
+                test=1;
+                firstImc = users.get(i).getImc();
+            }
+        }
+        
+        if(test == 1){
+            
+            if(firstImc > imc){
+                reply = "O usuário perdeu "+ (firstImc-imc) +" de IMC";
+            } else if(firstImc < imc){
+                reply = "O usuário ganhou "+ (imc-firstImc) +" de IMC";
+            } else{
+                reply = "O usuário está com o mesmo IMC";
+            }
+            
+            test=0;
+        } else{
+            reply = "Primeiro registro!";
+        }
         
         return reply;
 

@@ -35,11 +35,11 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jtAltura" min="-2" pref="152" max="-2" attributes="0"/>
+                      <Component id="jtHeight" min="-2" pref="152" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jtPeso" pref="142" max="32767" attributes="0"/>
+                      <Component id="jtWeight" pref="142" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
@@ -54,7 +54,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="btCalcular" min="-2" max="-2" attributes="0"/>
+              <Component id="btCalculate" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -65,8 +65,8 @@
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtAltura" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jtPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtHeight" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtWeight" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
                   <Component id="jtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="btCalcular" pref="31" max="32767" attributes="0"/>
+              <Component id="btCalculate" pref="31" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lbImc" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
@@ -94,7 +94,7 @@
         <Property name="text" type="java.lang.String" value="Altura:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtAltura">
+    <Component class="javax.swing.JTextField" name="jtHeight">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
@@ -109,7 +109,7 @@
         <Property name="text" type="java.lang.String" value="Peso:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jtPeso">
+    <Component class="javax.swing.JTextField" name="jtWeight">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
@@ -142,7 +142,7 @@
         <Property name="text" type="java.lang.String" value="Resposta do servidor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btCalcular">
+    <Component class="javax.swing.JButton" name="btCalculate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="14" style="1"/>
@@ -150,7 +150,7 @@
         <Property name="text" type="java.lang.String" value="Calcular"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCalcularActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCalculateActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

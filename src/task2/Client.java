@@ -39,14 +39,14 @@ public class Client extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jtAltura = new javax.swing.JTextField();
+        jtHeight = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtPeso = new javax.swing.JTextField();
+        jtWeight = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jtPassword = new javax.swing.JPasswordField();
         lbImc = new javax.swing.JLabel();
         lbReplyServer = new javax.swing.JLabel();
-        btCalcular = new javax.swing.JButton();
+        btCalculate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -54,12 +54,12 @@ public class Client extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Altura:");
 
-        jtAltura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtHeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Peso:");
 
-        jtPeso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jtWeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Senha:");
@@ -70,11 +70,11 @@ public class Client extends javax.swing.JFrame {
         lbReplyServer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbReplyServer.setText("Resposta do servidor");
 
-        btCalcular.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btCalcular.setText("Calcular");
-        btCalcular.addActionListener(new java.awt.event.ActionListener() {
+        btCalculate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btCalculate.setText("Calcular");
+        btCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCalcularActionPerformed(evt);
+                btCalculateActionPerformed(evt);
             }
         });
 
@@ -92,11 +92,11 @@ public class Client extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
+                        .addComponent(jtWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
                 .addGap(56, 56, 56))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
@@ -106,7 +106,7 @@ public class Client extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCalcular)
+                .addComponent(btCalculate)
                 .addGap(215, 215, 215))
         );
         layout.setVerticalGroup(
@@ -115,15 +115,15 @@ public class Client extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(btCalculate, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(lbImc)
                 .addGap(36, 36, 36)
@@ -136,23 +136,23 @@ public class Client extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void btCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularActionPerformed
+    private void btCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalculateActionPerformed
         // TODO add your handling code here:
         
         String reply="";
         Server s = new Server();
         
-        if(jtAltura.getText().toString().equals("") || 
+        if(jtHeight.getText().toString().equals("") || 
                 jtPassword.getText().toString().equals("") ||
-                jtPeso.getText().toString().equals("")){
+                jtWeight.getText().toString().equals("")){
             
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             
         } else{
 
-            double altura = Double.parseDouble(jtAltura.getText().toString());
-            double peso = Double.parseDouble(jtPeso.getText().toString());
-            double imc = peso/(altura*altura);
+            double height = Double.parseDouble(jtHeight.getText().toString());
+            double weight = Double.parseDouble(jtWeight.getText().toString());
+            double imc = weight/(height*height);
 
             lbImc.setText("IMC: "+imc);
 
@@ -179,7 +179,7 @@ public class Client extends javax.swing.JFrame {
             
         }
         
-    }//GEN-LAST:event_btCalcularActionPerformed
+    }//GEN-LAST:event_btCalculateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -217,13 +217,13 @@ public class Client extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCalcular;
+    private javax.swing.JButton btCalculate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jtAltura;
+    private javax.swing.JTextField jtHeight;
     private javax.swing.JPasswordField jtPassword;
-    private javax.swing.JTextField jtPeso;
+    private javax.swing.JTextField jtWeight;
     private javax.swing.JLabel lbImc;
     private javax.swing.JLabel lbReplyServer;
     // End of variables declaration//GEN-END:variables
