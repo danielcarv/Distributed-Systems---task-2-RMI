@@ -7,9 +7,6 @@ package task2;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.rmi.AccessException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
@@ -41,10 +38,10 @@ public class Client extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jtHeight = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jtWeight = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtPassword = new javax.swing.JPasswordField();
+        jtCpf = new javax.swing.JTextField();
         lbImc = new javax.swing.JLabel();
         lbReplyServer = new javax.swing.JLabel();
         btCalculate = new javax.swing.JButton();
@@ -57,16 +54,18 @@ public class Client extends javax.swing.JFrame {
 
         jtHeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
+        jtWeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Peso:");
 
-        jtWeight.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Senha:");
+        jLabel3.setText("CPF:");
+
+        jtCpf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         lbImc.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbImc.setText("IMC:");
+        lbImc.setText("IMC");
 
         lbReplyServer.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbReplyServer.setText("Resposta do servidor");
@@ -84,104 +83,97 @@ public class Client extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtPassword))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)))
-                .addGap(56, 56, 56))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbImc)
-                    .addComponent(lbReplyServer))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCalculate)
-                .addGap(215, 215, 215))
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbReplyServer)
+                            .addComponent(lbImc)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(btCalculate)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel2)
+                    .addComponent(jtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btCalculate, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(btCalculate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(lbImc)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(lbReplyServer)
-                .addGap(33, 33, 33))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void btCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalculateActionPerformed
         // TODO add your handling code here:
-        
-        String reply="";
-        if(jtHeight.getText().toString().equals("") || 
-                jtPassword.getText().toString().equals("") ||
+
+        if(jtCpf.getText().toString().equals("") ||
+                jtHeight.getText().toString().equals("") ||
                 jtWeight.getText().toString().equals("")){
             
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             
         } else{
-
-            double height = Double.parseDouble(jtHeight.getText().toString());
-            double weight = Double.parseDouble(jtWeight.getText().toString());
-            double imc = weight/(height*height);
-
-            lbImc.setText("IMC: "+imc);
-
+            
+            String ip="";
             try {
-                
-                ArrayList<String> data = new ArrayList<>();
-                
-                InetAddress inetAddress = InetAddress.getLocalHost();
-                String ip = inetAddress.getHostAddress();
-
-                Registry x = LocateRegistry.getRegistry("192.168.43.78", 3666);
-                Functions z = (Functions) x.lookup("calcular massa corporea");
-           
-                
-                
-                data.add(""+imc);
-                data.add(ip);
-                data.add(jtPassword.getText().toString());
-                
-                reply = z.send(data);
-                
-            } catch (RemoteException ex) {
-                JOptionPane.showMessageDialog(null, "Erro: "+ ex.getMessage());
+                InetAddress inetAddress = InetAddress.getLocalHost();            
+                ip = inetAddress.getHostAddress();
             } catch (UnknownHostException ex) {
-                Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (NotBoundException ex) {
                 Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            lbReplyServer.setText(reply);
+            ArrayList<String> data = new ArrayList<>();
+            data.add(jtCpf.getText().toString());
+            data.add(jtHeight.getText().toString());
+            data.add(jtWeight.getText().toString());
+            data.add(ip);
+            
+            try {
+                
+                Registry x = LocateRegistry.getRegistry("127.0.0.1", 3666);
+                Functions f = (Functions) x.lookup("calcular massa corporea");
+                lbImc.setText(f.calculateImc(data));
+                
+               
+                Functions f2 = (Functions) x.lookup("imc");
+                data.add(lbImc.getText().toString());
+                lbReplyServer.setText(f2.ultimoIMC(data));
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Erro ao calcular o IMC: "+ e.getMessage());
+            }
             
         }
         
@@ -227,8 +219,8 @@ public class Client extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField jtCpf;
     private javax.swing.JTextField jtHeight;
-    private javax.swing.JPasswordField jtPassword;
     private javax.swing.JTextField jtWeight;
     private javax.swing.JLabel lbImc;
     private javax.swing.JLabel lbReplyServer;

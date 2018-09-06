@@ -26,17 +26,17 @@ public class UserDAO {
     public void adiciona(User u){
         
         try {
-            PreparedStatement pst = cn.prepareStatement("insert into users (imc, ip, password) values (?, ?, ?)");
+            PreparedStatement pst = cn.prepareStatement("insert into users (imc, ip, cpf) values (?, ?, ?)");
             pst.setDouble(1, u.getImc());
             pst.setString(2, u.getIp());
-            pst.setString(3, u.getPassword());
+            pst.setString(3, u.getCpf());
             
             pst.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
+//            JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso!");
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + e);
+//            JOptionPane.showMessageDialog(null, "Erro ao cadastrar: " + e);
         }
 
     }
@@ -44,7 +44,7 @@ public class UserDAO {
     public ArrayList<User> retornaTodos(){
         ArrayList<User> results = new ArrayList<>();
         
-        String cmd = "select * from users";
+        String cmd = "select * from users order by id desc";
         Statement stmt;
         ResultSet dados=null;
         c.conexao();
@@ -55,14 +55,14 @@ public class UserDAO {
                 int id = dados.getInt(1);
                 double imc = dados.getDouble(2);
                 String ip = dados.getString(3);
-                String password = dados.getString(4);
+                String cpf = dados.getString(4);
                 
-                User u = new User(imc, ip, password);
+                User u = new User(imc, ip, cpf);
                 
                 results.add(u);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e);
+//            JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
         
         return results;

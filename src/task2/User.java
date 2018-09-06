@@ -6,22 +6,22 @@ public class User {
     private int id;
     private double imc;
     private String ip;
-    private String password;
+    private String cpf;
 
     public User() {
     }
 
-    public User(int id, double imc, String ip, String password) {
+    public User(int id, double imc, String ip, String cpf) {
         this.id = id;
         this.imc = imc;
         this.ip = ip;
-        this.password = password;
+        this.cpf = cpf;
     }
 
-    public User(double imc, String ip, String password) {
+    public User(double imc, String ip, String cpf) {
         this.imc = imc;
         this.ip = ip;
-        this.password = password;
+        this.cpf = cpf;
     }
 
     public int getId() {
@@ -48,12 +48,12 @@ public class User {
         this.ip = ip;
     }
 
-    public String getPassword() {
-        return password;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     
     
